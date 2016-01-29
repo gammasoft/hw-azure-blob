@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+    meta(charset="UTF-8")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
+    link(rel="shortcut icon", href="data:image/x-icon;,", type="image/x-icon")
+    title #{container.toUpperCase()} - Azure Storage
+body
+    .container
+        .row
+            .col-sm-12
+                h1: | #{container.toUpperCase()}
+                btn.btn.btn-xs.btn-default(data-toggle="modal", href="#envioDeArquivoModal")
+                    i.glyphicon.glyphicon-cloud-upload
+                    | &nbsp;Upload
+                br
+        .row
+            .col-sm-12
+                table.table.table-condensed.table-striped.table-hover(style="margin-top: 20px;")
+                    thead
+                        tr
+                            th: | Name
+                            th: | Type
+                            th: | Size
+                            th: | Last Modified
+                            th
+                            th
+                    tbody
+                        each blob in blobs
+                            tr
+                                td: | #{blob.name}
+                                td: | #{blob.properties['content-type']}
+                                td: | #{formatFileSize(blob.properties['content-length'])}
+                                td: | #{moment(blob.properties['last-modified']).format('DD/MM/YYYY H:mm')}
+                                td
+                                    a(href="/#{blob.name}", target="_blank").btn.btn-xs.btn-info
+                                        i.glyphicon.glyphicon-download-alt
+                                        | &nbsp;Download
+
+                                td
+                                    a(href="/#{blob.name}", target="_blank").btn.btn-xs.btn-danger
+                                        i.glyphicon.glyphicon-trash
+                                        | &nbsp;Delete
+
+        .row
+            .col-sm-12
+                a(href="www.github.com/gammasoft/hw-azure-blob"): | www.github.com/gammasoft/hw-azure-blob
+
+    .modal.fade#envioDeArquivoModal(tabindex="-1", role="dialog", aria-labelledby="envioDeArquivoModalLabel", aria-hidden="true")
+        .modal-dialog.modal-md
+            .modal-content
+                .modal-header
+                    button(type="button", class="close", data-dismiss="modal")
+                        span(aria-hidden="true"): | &times;
+                        span(class="sr-only"): | Fechar
+
+                    h4.modal-title#envioDeArquivoModalLabel: | Upload
+
+                .modal-body
+                    .row
+                        .col-sm-12
+                            input(type="file")
+                    .row(style="margin-top: 10px;")
+                        .col-sm-12
+                            .progress
+                                .progress-bar(role="progressbar", aria-valuenow="60", aria-valuemin="0", aria-valuemax="100")
+
+                .modal-footer
+                    button#enviarArquivo(type="button", class="btn btn-primary", data-dismiss="modal"): | Ok
+
+    script(src="https://code.jquery.com/jquery-2.2.0.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
+    script(src="/js/index.js")
