@@ -1,0 +1,39 @@
+{
+  "name": "hw-azure-blob",
+  "version": "1.0.0",
+  "description": "Functional example of how to use Microsoft Azure Blob Storage from node.js and how to upload files straight from the browser with jQuery",
+  "main": "index.js",
+  "dependencies": {
+    "azure-signature": "^1.0.1",
+    "azure-storage": "^0.8.0",
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "gammautils": "0.0.74",
+    "jade": "^1.11.0",
+    "method-override": "^2.3.5",
+    "mime": "^1.3.4",
+    "moment": "^2.11.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "exit 0;"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gammasoft/hw-azure-blob.git"
+  },
+  "keywords": [
+    "azure",
+    "blob",
+    "node",
+    "example",
+    "jquery",
+    "upload"
+  ],
+  "author": "Renato Gama <renato@gammasoft.com.br>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gammasoft/hw-azure-blob/issues"
+  },
+  "homepage": "https://github.com/gammasoft/hw-azure-blob"
+}

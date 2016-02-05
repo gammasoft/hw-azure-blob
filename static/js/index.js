@@ -60,7 +60,7 @@ $(function() {
                 });
 
                 ajax.done(function() {
-                    // location.reload();
+                    location.reload();
                 });
 
                 ajax.fail(function() {
