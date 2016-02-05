@@ -10,10 +10,15 @@ body
         .row
             .col-sm-12
                 h1: | #{container.toUpperCase()}
+        .row
+            .col-sm-6
                 btn.btn.btn-xs.btn-default(data-toggle="modal", href="#envioDeArquivoModal")
                     i.glyphicon.glyphicon-cloud-upload
                     | &nbsp;Upload
-                br
+            .col-sm-6.text-right
+                form(action="/")
+                    input(type="text", name="prefix", placeholder="Search by prefix")
+
         .row(style="margin-top: 20px;")
             .col-sm-12
                 if !blobs.length

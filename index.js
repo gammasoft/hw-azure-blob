@@ -51,7 +51,9 @@ app.get('/upload-metadata', function(req, res, next) {
 });
 
 app.get('/', function(req, res, next) {
-    blobService.listBlobsSegmented(env.container, null, function(err, result, response){
+    var prefix = req.query.prefix;
+
+    blobService.listBlobsSegmentedWithPrefix(env.container, prefix, null, function(err, result, response){
         if(err){
             return next(err)
         }
